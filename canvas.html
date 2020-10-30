@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Snake</title>
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <!-- Corresponding js and css files -->
+        <link rel="stylesheet" type="text/css" href="canvas.css">
+        <script type="text/javascript" src="canvas.js"></script>
+    </head>
+
+    <body>
+        <div id="container">
+            <h1 id="title">Snake!</h1>
+            <div id="canvas-container">
+                <div id="canvas-overlay" width="300" height="300">
+                    <button id="new-game-button">Start Game</button>
+                    <div id="difficulty-container">
+                        <h1 id="difficulty-label">Difficulty:</h1>
+                        <button class="difficulty-button active-difficulty" id="difficulty-0">Easy</button>
+                        <button class="difficulty-button" id="difficulty-1">Medium</button>
+                        <button class="difficulty-button" id="difficulty-2">Hard</button>
+                    </div>
+
+                </div>
+                <canvas id="myCanvas" width="300" height="300">
+                    <p id="fallback">Canvas shown here</p>
+                </canvas>
+            </div>
+        </div>
+    </body>
+</html>
