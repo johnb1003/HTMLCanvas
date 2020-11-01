@@ -1,7 +1,7 @@
 var canvas;
 var context;
 var difficulty = 'difficulty-0';
-var speeds = [300, 200, 100];
+var speeds = [150, 100, 50];
 var game;
 
 function sleep(ms) {
@@ -90,8 +90,10 @@ class SnakeGame {
         this.lastDirection = 'right';
         this.direction = 'right';
         this.score = 0;
-        this.context = document.getElementById('myCanvas').getContext('2d');
-        this.canvasUnit = document.getElementById('myCanvas').width / this.dimensions;
+        this.scoreElement = '#score';
+        this.context = document.getElementById('my-canvas').getContext('2d');
+        this.canvasUnit = document.getElementById('my-canvas').width / this.dimensions;
+        this.overlay = '#canvas-overlay';
 
         for(let i=0; i<this.dimensions; i++) {
             this.model.push(new Array(this.dimensions).fill(0));
@@ -118,6 +120,7 @@ class SnakeGame {
     }
 
     async play() {
+        await $(this.scoreElement).text(this.score);
         this.isLive = true;
         
         while(this.isLive) {
@@ -131,6 +134,7 @@ class SnakeGame {
 
     gameOver() {
         this.isLive = false;
+        $(this.overlay).css('display', 'flex')
     }
 
     clearCanvas() {
@@ -233,7 +237,7 @@ class SnakeGame {
                 await this.addSnake(nextCoords[0], nextCoords[1]);
                 await this.addRandomItem();
                 this.score++;
-
+                await $(this.scoreElement).text(this.score);
             }
             // Move to open space
             else {
